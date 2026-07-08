@@ -236,13 +236,15 @@ h1 {
 }
 
 .section-nav {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 0.45rem;
   padding: 0.55rem 0 0.7rem;
 }
 
 .section-nav a {
+  flex: 0 1 calc((100% - 0.45rem) / 2);
   min-height: 2.15rem;
   display: inline-flex;
   align-items: center;
@@ -374,6 +376,12 @@ h1 {
   direction: ltr;
 }
 
+@media (min-width: 560px) {
+  .section-nav a {
+    flex-basis: calc((100% - 0.9rem) / 3);
+  }
+}
+
 @media (min-width: 720px) {
   html {
     scroll-padding-top: 5.8rem;
@@ -389,7 +397,11 @@ h1 {
   }
 
   .section-nav {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    justify-content: center;
+  }
+
+  .section-nav a {
+    flex-basis: calc((100% - 1.8rem) / 5);
   }
 
   .menu-page {
