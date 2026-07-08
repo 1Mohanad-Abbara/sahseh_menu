@@ -23,7 +23,7 @@ body {
   overflow-x: hidden;
   background: var(--paper);
   color: var(--ink);
-  font-family: Tahoma, Arial, "Segoe UI", sans-serif;
+  font-family: "Tajawal", Tahoma, Arial, "Segoe UI", sans-serif;
 }
 
 a {
