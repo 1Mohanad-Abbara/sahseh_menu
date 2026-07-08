@@ -31,6 +31,11 @@ a {
   text-decoration: none;
 }
 
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -199,6 +204,22 @@ h1 {
   font-weight: 900;
   box-shadow: 0 8px 22px rgba(80, 25, 20, 0.08);
   white-space: nowrap;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.section-nav a:active {
+  border-color: rgba(237, 31, 39, 0.34);
+  background: #fff1f1;
+  color: var(--brand-red-dark);
+}
+
+.section-nav a:focus {
+  outline: none;
+}
+
+.section-nav a:focus-visible {
+  outline: 2px solid rgba(237, 31, 39, 0.42);
+  outline-offset: 2px;
 }
 
 .menu-group {
