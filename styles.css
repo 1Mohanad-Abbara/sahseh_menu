@@ -221,11 +221,18 @@ h1 {
 }
 
 .price-slot {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   height: 2.1rem;
   border: 1.5px dashed rgba(237, 31, 39, 0.45);
   border-radius: 0.55rem;
   background: #fff8f8;
+  color: var(--brand-red-dark);
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  direction: ltr;
 }
 
 @media (min-width: 720px) {
