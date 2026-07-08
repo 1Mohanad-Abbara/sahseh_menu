@@ -26,10 +26,24 @@ if (nav) {
 }
 
 const backToTop = document.querySelector(".back-to-top");
+const footer = document.querySelector(".site-footer");
+let isFooterVisible = false;
+
+function footerInView() {
+  if (!footer) return false;
+
+  const footerBox = footer.getBoundingClientRect();
+  return footerBox.top < window.innerHeight && footerBox.bottom > 0;
+}
 
 function updateBackToTop() {
   if (!backToTop) return;
-  backToTop.classList.toggle("is-visible", window.scrollY > 240);
+
+  if (footer && !("IntersectionObserver" in window)) {
+    isFooterVisible = footerInView();
+  }
+
+  backToTop.classList.toggle("is-visible", window.scrollY > 240 && !isFooterVisible);
 }
 
 if (backToTop) {
@@ -37,6 +51,19 @@ if (backToTop) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
+  if (footer && "IntersectionObserver" in window) {
+    const footerObserver = new IntersectionObserver(
+      ([entry]) => {
+        isFooterVisible = entry.isIntersecting;
+        updateBackToTop();
+      },
+      { threshold: 0.01 }
+    );
+
+    footerObserver.observe(footer);
+  }
+
   updateBackToTop();
   window.addEventListener("scroll", updateBackToTop, { passive: true });
+  window.addEventListener("resize", updateBackToTop);
 }
