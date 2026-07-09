@@ -22,7 +22,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    linear-gradient(rgba(255, 250, 245, 0.84), rgba(255, 250, 245, 0.84)),
+    linear-gradient(rgba(255, 250, 245, 0.76), rgba(255, 250, 245, 0.76)),
     url("assets/beauty/background-pattern.svg");
   background-size: auto, 260px 260px;
   background-color: var(--paper);
@@ -249,27 +249,33 @@ h1 {
 
 .section-nav a {
   flex: 0 1 calc((100% - 0.45rem) / 2);
-  min-height: 2.15rem;
-  display: inline-flex;
+  min-height: 2.45rem;
+  display: grid;
+  grid-template-columns: 1.35rem minmax(0, 1fr);
   align-items: center;
-  justify-content: center;
   gap: 0.35rem;
-  padding: 0 0.75rem;
+  padding: 0.28rem 0.75rem;
   border: 1px solid rgba(237, 31, 39, 0.2);
   border-radius: 999px;
   background: #fff;
   color: var(--brand-red-dark);
   font-size: 0.86rem;
   font-weight: 900;
+  line-height: 1.12;
+  text-align: start;
   box-shadow: 0 8px 22px rgba(80, 25, 20, 0.08);
-  white-space: nowrap;
   transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
 }
 
 .section-nav a img {
-  flex: 0 0 auto;
   width: 1.35rem;
   height: 1.35rem;
+}
+
+.nav-label {
+  min-width: 0;
+  overflow-wrap: normal;
+  white-space: normal;
 }
 
 .section-nav a:active {
@@ -430,9 +436,6 @@ h1 {
     height: 3.7rem;
   }
 
-  .section-nav {
-    justify-content: center;
-  }
 
   .section-nav a {
     flex-basis: calc((100% - 1.8rem) / 5);
@@ -494,7 +497,7 @@ h1 {
     font-size: 0.9rem;
   }
 
-  
+
   .footer-actions {
     justify-content: space-between;
     gap: 0.5rem;
