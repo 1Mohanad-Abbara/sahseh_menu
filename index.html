@@ -256,10 +256,28 @@
         </a>
       </div>
     </footer>
+    <div class="product-modal" data-product-modal aria-hidden="true">
+      <div class="product-modal-backdrop" data-modal-close></div>
+      <section class="product-modal-panel" role="dialog" aria-modal="true" aria-labelledby="product-modal-title" tabindex="-1">
+        <div class="product-modal-top">
+          <p class="product-modal-price" data-modal-price></p>
+          <div class="product-modal-heading">
+            <h2 id="product-modal-title" data-modal-title>اسم المنتج</h2>
+          </div>
+        </div>
+        <div class="product-modal-media">
+          <img class="product-modal-image" alt="" loading="lazy" decoding="async" data-modal-image hidden />
+          <div class="product-modal-image-placeholder" data-modal-image-placeholder>
+            <span>صورة المنتج</span>
+          </div>
+        </div>
+        <div class="product-modal-ingredients">
+          <h3>المكونات</h3>
+          <p data-modal-ingredients>سيتم إضافة المكونات لاحقا.</p>
+        </div>
+      </section>
+    </div>
     <button class="back-to-top" type="button" aria-label="العودة إلى أعلى الصفحة">↑</button>
     <script src="script.js"></script>
   </body>
 </html>
-
-
-
