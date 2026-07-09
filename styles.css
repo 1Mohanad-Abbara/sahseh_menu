@@ -21,7 +21,11 @@ body {
   min-width: 0;
   min-height: 100vh;
   overflow-x: hidden;
-  background: var(--paper);
+  background:
+    linear-gradient(rgba(255, 250, 245, 0.84), rgba(255, 250, 245, 0.84)),
+    url("assets/beauty/background-pattern.svg");
+  background-size: auto, 260px 260px;
+  background-color: var(--paper);
   color: var(--ink);
   font-family: "Tajawal", Tahoma, Arial, "Segoe UI", sans-serif;
 }
@@ -249,6 +253,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.35rem;
   padding: 0 0.75rem;
   border: 1px solid rgba(237, 31, 39, 0.2);
   border-radius: 999px;
@@ -259,6 +264,12 @@ h1 {
   box-shadow: 0 8px 22px rgba(80, 25, 20, 0.08);
   white-space: nowrap;
   transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.section-nav a img {
+  flex: 0 0 auto;
+  width: 1.35rem;
+  height: 1.35rem;
 }
 
 .section-nav a:active {
@@ -325,13 +336,36 @@ h1 {
 }
 
 .menu-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
   margin: 0;
-  padding: 0.8rem 0.95rem;
-  background: var(--brand-red);
+  padding: 0.65rem 0.85rem;
+  background: linear-gradient(90deg, rgba(189, 21, 28, 0.82), rgba(237, 31, 39, 1));
   color: #fff;
   font-size: 1.08rem;
   line-height: 1.1;
   letter-spacing: 0;
+}
+
+.menu-section h3 > span:last-child {
+  min-width: 0;
+}
+
+.section-icon {
+  flex: 0 0 auto;
+  width: 2.45rem;
+  height: 2.45rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.72rem;
+  background: #fff;
+}
+
+.section-icon img {
+  width: 2rem;
+  height: 2rem;
 }
 
 .product-list {
@@ -412,6 +446,7 @@ h1 {
     scroll-margin-top: 5.8rem;
   }
 
+
   .product-list li {
     grid-template-columns: minmax(0, 1fr) 8rem;
     min-height: 3.2rem;
@@ -478,6 +513,21 @@ h1 {
     min-height: 2rem;
     padding-inline: 0.58rem;
     font-size: 0.8rem;
+  }
+
+  .section-nav a img {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  .section-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .section-icon img {
+    width: 1.8rem;
+    height: 1.8rem;
   }
 
   .product-list li {
