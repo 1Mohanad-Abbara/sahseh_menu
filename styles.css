@@ -469,7 +469,7 @@ body.modal-open {
   grid-template-rows: auto minmax(0, auto) auto;
   gap: 0.6rem;
   overflow: hidden;
-  border: 4px solid var(--brand-red);
+  border: 2px solid rgba(33, 24, 23, 0.88);
   border-radius: 0.95rem;
   background: var(--panel);
   color: var(--ink);
@@ -500,7 +500,7 @@ body.modal-open {
   min-height: 0;
   margin: 0 auto;
   overflow: hidden;
-  border: 0;
+  border: 2px solid rgba(33, 24, 23, 0.72);
   border-radius: 0.82rem;
   background: #fff8f8;
 }
