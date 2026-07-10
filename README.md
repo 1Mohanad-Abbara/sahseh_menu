@@ -1,15 +1,14 @@
 # Sahseh Menu
 
-Static digital menu website for Sahseh.
+Static Arabic digital menu website for Sahseh.
 
 ## Structure
 
-- `index.html` - menu page content
-- `styles.css` - responsive styling
-- `script.js` - navigation and back-to-top behavior
-- `assets/` - logo/artwork, menu images, photos, and original PDFs
+- index.html - menu page content
+- styles.css - responsive styling
+- script.js - navigation and back-to-top behavior
+- assets/ - logo/artwork, menu images, photos, and original PDFs
 
 ## Publish
 
-This repo is ready for GitHub Pages. Publish from the repository root so
-`index.html` is served as the home page.
+This repo is intended for Vercel static hosting through GitHub. Use the repository root as the project root and serve index.html as the home page. No build command is required for the current static version.
