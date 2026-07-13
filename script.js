@@ -7,9 +7,20 @@ function fixedOffset() {
   return headerHeight + 8;
 }
 
-function scrollToSection(section) {
+function scrollToSection(section, behavior = "smooth", updateHash = true) {
   const targetTop = window.scrollY + section.getBoundingClientRect().top - fixedOffset();
-  window.scrollTo({ top: Math.max(targetTop, 0), behavior: "smooth" });
+  window.scrollTo({ top: Math.max(targetTop, 0), behavior });
+  if (updateHash && section.id) history.replaceState(null, "", `#${section.id}`);
+}
+
+function scrollToHashTarget(behavior = "auto") {
+  const hash = window.location.hash;
+  if (!hash) return;
+
+  const section = document.getElementById(decodeURIComponent(hash.slice(1)));
+  if (!section) return;
+
+  scrollToSection(section, behavior, false);
 }
 
 function setupSectionNav() {
@@ -26,8 +37,7 @@ function setupSectionNav() {
       if (!section) return;
 
       event.preventDefault();
-      scrollToSection(section);
-      history.replaceState(null, "", id);
+      scrollToSection(section, "smooth", false);
     });
   });
 }
@@ -162,6 +172,7 @@ function renderMenu(menuData) {
   menuPage.replaceChildren(fragment);
   setupSectionNav();
   setupProductItems();
+  scrollToHashTarget("auto");
 }
 
 async function loadMenuData() {
@@ -293,6 +304,7 @@ function setupProductItems() {
 }
 
 setupSectionNav();
+window.setTimeout(() => scrollToHashTarget("auto"), 50);
 
 if (productModal) {
   setupProductItems();
