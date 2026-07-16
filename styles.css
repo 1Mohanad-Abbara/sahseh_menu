@@ -267,7 +267,6 @@ h1 {
   line-height: 1.12;
   text-align: start;
   box-shadow: 0 8px 22px rgba(80, 25, 20, 0.08);
-  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
 }
 
 .section-nav a img {
@@ -281,11 +280,6 @@ h1 {
   white-space: normal;
 }
 
-.section-nav a:active {
-  border-color: rgba(237, 31, 39, 0.34);
-  background: #fff1f1;
-  color: var(--brand-red-dark);
-}
 
 .section-nav a:focus {
   outline: none;
