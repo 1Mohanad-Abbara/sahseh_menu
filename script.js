@@ -2,6 +2,10 @@ const header = document.querySelector(".site-header");
 const menuPage = document.querySelector(".menu-page");
 const menuSourceUrl = menuPage ? menuPage.dataset.menuSource || "data/menu.json" : "data/menu.json";
 
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
 function fixedOffset() {
   const headerHeight = header ? header.getBoundingClientRect().height : 0;
   return headerHeight + 8;
@@ -21,6 +25,28 @@ function scrollToHashTarget(behavior = "auto") {
   if (!section) return;
 
   scrollToSection(section, behavior, false);
+}
+
+function afterNextPaint(callback) {
+  if ("requestAnimationFrame" in window) {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(callback);
+    });
+    return;
+  }
+
+  window.setTimeout(callback, 0);
+}
+
+function settleHashTarget(behavior = "auto") {
+  if (!window.location.hash) return;
+
+  afterNextPaint(() => scrollToHashTarget(behavior));
+  window.setTimeout(() => scrollToHashTarget(behavior), 120);
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => scrollToHashTarget(behavior)).catch(() => {});
+  }
 }
 
 function setupSectionNav() {
@@ -172,7 +198,7 @@ function renderMenu(menuData) {
   menuPage.replaceChildren(fragment);
   setupSectionNav();
   setupProductItems();
-  scrollToHashTarget("auto");
+  settleHashTarget("auto");
 }
 
 async function loadMenuData() {
@@ -304,7 +330,8 @@ function setupProductItems() {
 }
 
 setupSectionNav();
-window.setTimeout(() => scrollToHashTarget("auto"), 50);
+settleHashTarget("auto");
+window.addEventListener("load", () => scrollToHashTarget("auto"), { once: true });
 
 if (productModal) {
   setupProductItems();
