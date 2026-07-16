@@ -427,21 +427,15 @@ body.modal-open {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
-  transition: background 120ms ease, transform 120ms ease;
 }
 
-.product-list li:hover,
-.product-list li:focus-visible {
-  background: #fff8f8;
+.product-list li:focus {
+  outline: none;
 }
 
 .product-list li:focus-visible {
   outline: 2px solid rgba(237, 31, 39, 0.42);
   outline-offset: -2px;
-}
-
-.product-list li:active {
-  transform: scale(0.995);
 }
 
 .product-modal {

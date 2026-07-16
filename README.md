@@ -33,6 +33,15 @@ This static repo keeps deploy copies because Vercel serves this repo independent
 
 If `data/menu.json` fails to load, the fallback HTML menu remains visible.
 
+## Current Behavior Notes
+
+- The header keeps a deliberate small visual gap between the brand title `صَح صِح` and the statement `بيتك ومطرحك`; this is controlled by `.brand-statement` in `styles.css`.
+- In the footer, only the phone number text is clickable. The phone link is wrapped inside `p.footer-phone` so the surrounding footer area does not trigger the telephone link.
+- Product rows are clickable and keyboard accessible, but touch/click should not show a color flash, hover background, or active scale animation. Keep the keyboard `:focus-visible` outline.
+- Section buttons scroll to the exact section start below the sticky header. Initial page loads with a URL hash such as `#section-10` must behave the same way.
+- `script.js` sets manual scroll restoration and re-settles the hash target after paint, font readiness, page load, and JSON menu render. Preserve this if changing the header height, menu rendering, font loading, or section navigation.
+- When checking hash behavior, test through a local HTTP server rather than opening `index.html` directly, because the runtime menu fetch depends on `data/menu.json` being served over HTTP.
+
 ## Publish
 
 This repo is intended for Vercel static hosting through GitHub. Use the repository root as the project root and serve `index.html` as the home page. No build command is required for the current static version.
