@@ -8,7 +8,9 @@
   --paper: #050505;
   --panel: #101010;
   --panel-soft: #171717;
-  --line: rgba(255, 255, 255, 0.1);
+  --border-red: rgba(240, 38, 47, 0.56);
+  --border-red-soft: rgba(240, 38, 47, 0.34);
+  --line: var(--border-red-soft);
 }
 
 * {
@@ -62,7 +64,7 @@ img {
   padding: 0.55rem clamp(0.7rem, 4vw, 2rem);
   background: linear-gradient(180deg, #050505, #0d0d0d);
   color: var(--bar-text);
-  border-bottom: 1px solid rgba(240, 38, 47, 0.28);
+  border-bottom: 1px solid var(--border-red-soft);
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
 }
 
@@ -79,7 +81,7 @@ img {
   height: 3.25rem;
   object-fit: contain;
   padding: 0.16rem;
-  border: 1px solid rgba(240, 38, 47, 0.22);
+  border: 1px solid var(--border-red-soft);
   border-radius: 0.75rem;
   background: #111111;
 }
@@ -120,7 +122,7 @@ h1 {
   justify-content: center;
   min-height: 2.35rem;
   padding: 0 0.85rem;
-  border: 1px solid rgba(240, 38, 47, 0.48);
+  border: 1px solid var(--border-red);
   border-radius: 999px;
   background: rgba(240, 38, 47, 0.1);
   color: var(--bar-text);
@@ -153,7 +155,7 @@ h1 {
   justify-content: space-between;
   gap: 0.75rem;
   padding-bottom: 0.65rem;
-  border-bottom: 1px solid rgba(240, 38, 47, 0.26);
+  border-bottom: 1px solid var(--border-red-soft);
 }
 
 .footer-brand strong {
@@ -213,7 +215,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(240, 38, 47, 0.48);
+  border: 1px solid var(--border-red);
   border-radius: 50%;
   background: rgba(240, 38, 47, 0.1);
   color: var(--bar-text);
@@ -236,7 +238,7 @@ h1 {
 }
 
 .footer-action:active {
-  border-color: rgba(240, 38, 47, 0.72);
+  border-color: var(--border-red);
   background: rgba(240, 38, 47, 0.18);
   transform: scale(0.96);
 }
@@ -246,7 +248,7 @@ h1 {
 }
 
 .footer-action:focus-visible {
-  outline: 2px solid rgba(240, 38, 47, 0.72);
+  outline: 2px solid var(--border-red);
   outline-offset: 2px;
 }
 
@@ -266,7 +268,7 @@ h1 {
   align-items: center;
   gap: 0.35rem;
   padding: 0.28rem 0.75rem;
-  border: 1px solid rgba(240, 38, 47, 0.2);
+  border: 1px solid var(--border-red-soft);
   border-radius: 999px;
   background: var(--panel-soft);
   color: var(--ink);
@@ -294,7 +296,7 @@ h1 {
 }
 
 .section-nav a:focus-visible {
-  outline: 2px solid rgba(240, 38, 47, 0.54);
+  outline: 2px solid var(--border-red);
   outline-offset: 2px;
 }
 
@@ -322,7 +324,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(240, 38, 47, 0.28);
+  border: 1px solid var(--border-red-soft);
   border-radius: 50%;
   background: var(--panel-soft);
   color: var(--bar-text);
@@ -355,7 +357,7 @@ h1 {
   padding: 0.65rem 0.85rem;
   background: linear-gradient(180deg, #070707, #000000);
   color: var(--bar-text);
-  border-bottom: 1px solid rgba(240, 38, 47, 0.22);
+  border-bottom: 1px solid var(--border-red-soft);
   font-size: 1.08rem;
   line-height: 1.1;
   letter-spacing: 0;
@@ -372,7 +374,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(240, 38, 47, 0.2);
+  border: 1px solid var(--border-red-soft);
   border-radius: 0.72rem;
   background: var(--panel-soft);
 }
@@ -415,7 +417,7 @@ h1 {
   align-items: center;
   justify-content: center;
   height: 2.1rem;
-  border: 1.5px dashed rgba(240, 38, 47, 0.46);
+  border: 1.5px dashed var(--border-red);
   border-radius: 0.55rem;
   background: #070707;
   color: var(--brand-red-dark);
@@ -440,7 +442,7 @@ body.modal-open {
 }
 
 .product-list li:focus-visible {
-  outline: 2px solid rgba(240, 38, 47, 0.54);
+  outline: 2px solid var(--border-red);
   outline-offset: -2px;
 }
 
@@ -472,7 +474,7 @@ body.modal-open {
   grid-template-rows: auto minmax(0, auto) auto;
   gap: 0.6rem;
   overflow: hidden;
-  border: 2px solid rgba(240, 38, 47, 0.3);
+  border: 2px solid var(--border-red);
   border-radius: 0.95rem;
   background: var(--panel);
   color: var(--ink);
@@ -503,7 +505,7 @@ body.modal-open {
   min-height: 0;
   margin: 0 auto;
   overflow: hidden;
-  border: 2px solid rgba(240, 38, 47, 0.24);
+  border: 2px solid var(--border-red-soft);
   border-radius: 0.82rem;
   background: #070707;
 }
@@ -554,7 +556,7 @@ body.modal-open {
   min-width: 4.9rem;
   min-height: 2rem;
   padding: 0.42rem 0.65rem;
-  border: 1.5px dashed rgba(240, 38, 47, 0.46);
+  border: 1.5px dashed var(--border-red);
   border-radius: 0.58rem;
   background: #070707;
   color: var(--brand-red-dark);
@@ -758,7 +760,7 @@ body.modal-open {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 0;
+  border: 1px solid var(--border-red);
   border-radius: 50%;
   background: #050505;
   color: var(--bar-text);
