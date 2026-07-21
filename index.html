@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+    <script>
+      (() => {
+        try {
+          if (localStorage.getItem("sahseh-menu-theme") === "light") {
+            document.documentElement.dataset.theme = "light";
+          }
+        } catch (error) {}
+      })();
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -19,7 +28,12 @@
           <p class="brand-statement">بيتك ومطرحك</p>
         </div>
       </div>
-      <a class="phone-link" href="tel:+963947040585">+963 947 040 585</a>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="تفعيل النمط الفاتح" title="النمط الفاتح">
+          <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-thumb"></span></span>
+        </button>
+        <a class="phone-link" href="tel:+963947040585">+963 947 040 585</a>
+      </div>
     </header>
 
     <main class="menu-page" data-menu-source="data/menu.json">

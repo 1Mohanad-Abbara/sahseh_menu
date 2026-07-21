@@ -1,6 +1,41 @@
 const header = document.querySelector(".site-header");
 const menuPage = document.querySelector(".menu-page");
 const menuSourceUrl = menuPage ? menuPage.dataset.menuSource || "data/menu.json" : "data/menu.json";
+const themeToggle = document.querySelector("[data-theme-toggle]");
+const themeStorageKey = "sahseh-menu-theme";
+
+function savedTheme() {
+  try {
+    return localStorage.getItem(themeStorageKey) === "light" ? "light" : "dark";
+  } catch (error) {
+    return "dark";
+  }
+}
+
+function applyTheme(theme) {
+  const nextTheme = theme === "light" ? "light" : "dark";
+  document.documentElement.dataset.theme = nextTheme;
+
+  if (!themeToggle) return;
+
+  const isLight = nextTheme === "light";
+  themeToggle.setAttribute("aria-pressed", String(isLight));
+  themeToggle.setAttribute("aria-label", isLight ? "تفعيل النمط الداكن" : "تفعيل النمط الفاتح");
+  themeToggle.title = isLight ? "النمط الداكن" : "النمط الفاتح";
+}
+
+applyTheme(savedTheme());
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const nextTheme = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+    applyTheme(nextTheme);
+
+    try {
+      localStorage.setItem(themeStorageKey, nextTheme);
+    } catch (error) {}
+  });
+}
 
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";

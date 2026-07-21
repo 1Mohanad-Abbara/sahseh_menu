@@ -131,7 +131,240 @@ h1 {
   direction: ltr;
   white-space: nowrap;
 }
+.header-actions {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
 
+.theme-toggle {
+  flex: 0 0 auto;
+  width: 2.35rem;
+  height: 2.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--accent-line-strong);
+  border-radius: 999px;
+  background: rgba(237, 28, 35, 0.11);
+  color: var(--bar-text);
+  cursor: pointer;
+  font: inherit;
+}
+
+.theme-toggle:focus {
+  outline: none;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent-line-strong);
+  outline-offset: 2px;
+}
+
+.theme-toggle-track {
+  position: relative;
+  width: 1.45rem;
+  height: 0.82rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  opacity: 0.95;
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  top: 50%;
+  left: 0.14rem;
+  width: 0.46rem;
+  height: 0.46rem;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translateY(-50%);
+  transition: transform 140ms ease;
+}
+
+:root[data-theme="light"] .theme-toggle-thumb {
+  transform: translate(0.64rem, -50%);
+}
+
+:root[data-theme="light"] {
+  --brand-red: #ed1f27;
+  --brand-red-dark: #bd151c;
+  --bar-text: #bd151c;
+  --ink: #211817;
+  --muted: rgba(33, 24, 23, 0.74);
+  --paper: #fffaf5;
+  --panel: #ffffff;
+  --panel-soft: #ffffff;
+  --accent-line: rgba(237, 31, 39, 0.2);
+  --accent-line-strong: rgba(237, 31, 39, 0.45);
+  --line: rgba(33, 24, 23, 0.12);
+}
+
+:root[data-theme="light"] body {
+  background:
+    linear-gradient(rgba(255, 250, 245, 0.76), rgba(255, 250, 245, 0.76)),
+    url("assets/beauty/background-pattern.svg");
+  background-size: auto, 260px 260px;
+  background-color: var(--paper);
+}
+
+:root[data-theme="light"] .site-header {
+  background: var(--brand-red);
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 0 10px 30px rgba(120, 15, 18, 0.18);
+}
+
+:root[data-theme="light"] .brand-logo {
+  border-color: transparent;
+  background: #fff;
+}
+
+:root[data-theme="light"] .brand-statement {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+:root[data-theme="light"] .phone-link,
+:root[data-theme="light"] .theme-toggle {
+  border-color: rgba(255, 255, 255, 0.36);
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+:root[data-theme="light"] .theme-toggle:focus-visible {
+  outline-color: rgba(255, 255, 255, 0.72);
+}
+
+:root[data-theme="light"] .site-footer {
+  background: var(--brand-red);
+  color: #fff;
+  box-shadow: 0 -10px 30px rgba(120, 15, 18, 0.14);
+}
+
+:root[data-theme="light"] .footer-brand {
+  border-bottom-color: rgba(255, 255, 255, 0.24);
+}
+
+:root[data-theme="light"] .footer-brand strong,
+:root[data-theme="light"] .footer-info a {
+  color: #fff;
+}
+
+:root[data-theme="light"] .footer-brand span,
+:root[data-theme="light"] .footer-info p {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+:root[data-theme="light"] .footer-action {
+  border-color: rgba(255, 255, 255, 0.38);
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+:root[data-theme="light"] .footer-action:active {
+  border-color: rgba(255, 255, 255, 0.56);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+:root[data-theme="light"] .footer-action:focus-visible {
+  outline-color: rgba(255, 255, 255, 0.72);
+}
+
+:root[data-theme="light"] .section-nav a {
+  border-color: rgba(237, 31, 39, 0.2);
+  background: #fff;
+  color: var(--brand-red-dark);
+  box-shadow: 0 8px 22px rgba(80, 25, 20, 0.08);
+}
+
+:root[data-theme="light"] .section-nav a:focus-visible,
+:root[data-theme="light"] .product-list li:focus-visible {
+  outline-color: rgba(237, 31, 39, 0.42);
+}
+
+:root[data-theme="light"] .group-heading span {
+  border-color: transparent;
+  background: var(--brand-red);
+  color: #fff;
+}
+
+:root[data-theme="light"] .group-heading h2 {
+  color: var(--brand-red-dark);
+}
+
+:root[data-theme="light"] .menu-section {
+  border-color: var(--line);
+  background: var(--panel);
+  box-shadow: 0 12px 28px rgba(80, 25, 20, 0.08);
+}
+
+:root[data-theme="light"] .menu-section h3 {
+  background: linear-gradient(90deg, rgba(189, 21, 28, 0.82), rgba(237, 31, 39, 1));
+  color: #fff;
+  border-bottom-color: transparent;
+}
+
+:root[data-theme="light"] .section-icon {
+  border-color: transparent;
+  background: #fff;
+}
+
+:root[data-theme="light"] .product-list li {
+  border-bottom-color: var(--line);
+  color: var(--ink);
+}
+
+:root[data-theme="light"] .price-slot,
+:root[data-theme="light"] .product-modal-price {
+  border-color: rgba(237, 31, 39, 0.45);
+  background: #fff8f8;
+  color: var(--brand-red-dark);
+}
+
+:root[data-theme="light"] .product-modal-backdrop {
+  background: rgba(33, 24, 23, 0.54);
+}
+
+:root[data-theme="light"] .product-modal-panel {
+  border-color: rgba(33, 24, 23, 0.88);
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: 0 24px 70px rgba(33, 24, 23, 0.28);
+}
+
+:root[data-theme="light"] .product-modal-media {
+  border-color: rgba(33, 24, 23, 0.72);
+  background: #fff8f8;
+}
+
+:root[data-theme="light"] .product-modal-image-placeholder {
+  background: #fff8f8;
+  color: var(--brand-red-dark);
+}
+
+:root[data-theme="light"] .product-modal-heading h2,
+:root[data-theme="light"] .product-modal-ingredients h3 {
+  color: var(--brand-red-dark);
+}
+
+:root[data-theme="light"] .product-modal-ingredients p {
+  color: rgba(33, 24, 23, 0.74);
+}
+
+:root[data-theme="light"] .back-to-top {
+  border-color: transparent;
+  background: var(--brand-red);
+  color: #fff;
+  box-shadow: 0 14px 34px rgba(120, 15, 18, 0.28);
+}
+
+:root[data-theme="light"] .back-to-top:hover,
+:root[data-theme="light"] .back-to-top:focus-visible {
+  background: var(--brand-red-dark);
+}
 .menu-page {
   width: min(760px, calc(100% - 1.1rem));
   margin: 0 auto;
@@ -635,8 +868,7 @@ body.modal-open {
   .section-nav a {
     flex-basis: calc((100% - 1.8rem) / 5);
   }
-
-  .menu-page {
+.menu-page {
     padding-top: 0.95rem;
   }
 
@@ -673,6 +905,30 @@ body.modal-open {
     padding-inline: 0.55rem;
   }
 
+  .header-actions {
+    gap: 0.35rem;
+  }
+
+  .theme-toggle {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
+
+  .theme-toggle-track {
+    width: 1.28rem;
+    height: 0.74rem;
+  }
+
+  .theme-toggle-thumb {
+    left: 0.12rem;
+    width: 0.4rem;
+    height: 0.4rem;
+  }
+
+  :root[data-theme="light"] .theme-toggle-thumb {
+    transform: translate(0.54rem, -50%);
+  }
+
   .brand-statement {
     font-size: 0.74rem;
   }
@@ -702,8 +958,7 @@ body.modal-open {
     width: 2.55rem;
     height: 2.55rem;
   }
-
-  .menu-page {
+.menu-page {
     width: min(100% - 0.7rem, 760px);
   }
 
