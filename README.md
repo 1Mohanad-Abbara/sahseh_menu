@@ -36,6 +36,7 @@ If `data/menu.json` fails to load, the fallback HTML menu remains visible.
 ## Current Behavior Notes
 
 - The header keeps a deliberate small visual gap between the brand title `صَح صِح` and the statement `بيتك ومطرحك`; this is controlled by `.brand-statement` in `styles.css`.
+- The header includes a theme toggle button that switches between dark and light modes and persists the choice in `localStorage`.
 - In the footer, only the phone number text is clickable. The phone link is wrapped inside `p.footer-phone` so the surrounding footer area does not trigger the telephone link.
 - Product rows are clickable and keyboard accessible, but touch/click should not show a color flash, hover background, or active scale animation. Keep the keyboard `:focus-visible` outline.
 - Section buttons scroll to the exact section start below the sticky header and should not show a tap/active color flash. Initial page loads with a URL hash such as `#section-10` must behave the same way.

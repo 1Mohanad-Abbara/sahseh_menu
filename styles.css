@@ -77,13 +77,15 @@ img {
 
 .brand-logo {
   flex: 0 0 auto;
-  width: 3.25rem;
-  height: 3.25rem;
+  width: auto;
+  height: 3.5rem;
+  aspect-ratio: 614 / 994;
   object-fit: contain;
-  padding: 0.16rem;
-  border: 1px solid var(--accent-line);
-  border-radius: 0.75rem;
-  background: #fff7f1;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  filter: none;
 }
 
 .brand-text {
@@ -221,8 +223,10 @@ h1 {
 }
 
 :root[data-theme="light"] .brand-logo {
-  border-color: transparent;
-  background: #fff;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  filter: none;
 }
 
 :root[data-theme="light"] .brand-statement {
@@ -499,11 +503,11 @@ h1 {
   flex: 0 1 calc((100% - 0.45rem) / 2);
   min-height: 2.45rem;
   display: grid;
-  grid-template-columns: 1.35rem minmax(0, 1fr);
+  grid-template-columns: 1.55rem minmax(0, 1fr);
   align-items: center;
   gap: 0.35rem;
   padding: 0.28rem 0.75rem;
-  border: 1px solid var(--line);
+  border: 2px solid var(--line);
   border-radius: 999px;
   background: var(--panel-soft);
   color: var(--ink);
@@ -515,8 +519,11 @@ h1 {
 }
 
 .section-nav a img {
-  width: 1.35rem;
-  height: 1.35rem;
+  width: 1.55rem;
+  height: 1.55rem;
+  border: 2px solid;
+  border-color: inherit;
+  border-radius: 0.42rem;
 }
 
 .nav-label {
@@ -862,8 +869,7 @@ body.modal-open {
   }
 
   .brand-logo {
-    width: 3.7rem;
-    height: 3.7rem;
+    height: 3.95rem;
   }
 
 
@@ -898,9 +904,7 @@ body.modal-open {
   }
 
   .brand-logo {
-    width: 2.65rem;
-    height: 2.65rem;
-    border-radius: 0.62rem;
+    height: 2.9rem;
   }
 
   .phone-link {
@@ -963,8 +967,8 @@ body.modal-open {
   }
 
   .section-nav a img {
-    width: 1.15rem;
-    height: 1.15rem;
+    width: 1.35rem;
+    height: 1.35rem;
   }
 
   .section-icon {
