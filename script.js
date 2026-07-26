@@ -37,52 +37,17 @@ if (themeToggle) {
   });
 }
 
-if ("scrollRestoration" in history) {
-  history.scrollRestoration = "manual";
-}
 
 function fixedOffset() {
   const headerHeight = header ? header.getBoundingClientRect().height : 0;
   return headerHeight + 8;
 }
 
-function scrollToSection(section, behavior = "smooth", updateHash = true) {
+function scrollToSection(section, behavior = "smooth") {
   const targetTop = window.scrollY + section.getBoundingClientRect().top - fixedOffset();
   window.scrollTo({ top: Math.max(targetTop, 0), behavior });
-  if (updateHash && section.id) history.replaceState(null, "", `#${section.id}`);
 }
 
-function scrollToHashTarget(behavior = "auto") {
-  const hash = window.location.hash;
-  if (!hash) return;
-
-  const section = document.getElementById(decodeURIComponent(hash.slice(1)));
-  if (!section) return;
-
-  scrollToSection(section, behavior, false);
-}
-
-function afterNextPaint(callback) {
-  if ("requestAnimationFrame" in window) {
-    window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(callback);
-    });
-    return;
-  }
-
-  window.setTimeout(callback, 0);
-}
-
-function settleHashTarget(behavior = "auto") {
-  if (!window.location.hash) return;
-
-  afterNextPaint(() => scrollToHashTarget(behavior));
-  window.setTimeout(() => scrollToHashTarget(behavior), 120);
-
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => scrollToHashTarget(behavior)).catch(() => {});
-  }
-}
 
 function setupSectionNav() {
   const nav = document.querySelector(".section-nav");
@@ -98,22 +63,11 @@ function setupSectionNav() {
       if (!section) return;
 
       event.preventDefault();
-      scrollToSection(section, "smooth", false);
+      scrollToSection(section);
     });
   });
 }
 
-function isVisibleInDineIn(item) {
-  return item && item.visibleInDineIn !== false;
-}
-
-function orderedItems(items) {
-  return [...items].sort((first, second) => {
-    const firstOrder = Number.isFinite(Number(first.order)) ? Number(first.order) : 0;
-    const secondOrder = Number.isFinite(Number(second.order)) ? Number(second.order) : 0;
-    return firstOrder - secondOrder;
-  });
-}
 
 function productPriceText(product) {
   if (product.priceText !== undefined && product.priceText !== null) return String(product.priceText);
@@ -121,34 +75,12 @@ function productPriceText(product) {
   return "";
 }
 
-function validateMenuData(menuData) {
+function menuCategories(menuData) {
   if (!menuData || !Array.isArray(menuData.categories)) {
     throw new Error("Menu data is missing categories.");
   }
 
-  const categories = orderedItems(menuData.categories).filter(isVisibleInDineIn);
-  if (categories.length === 0) {
-    throw new Error("Menu data has no visible dine-in categories.");
-  }
-
-  categories.forEach((category) => {
-    if (!category.sectionId || !category.name || !category.icon || !Array.isArray(category.products)) {
-      throw new Error(`Menu category '${category.id || category.name || "unknown"}' is incomplete.`);
-    }
-
-    const products = orderedItems(category.products).filter(isVisibleInDineIn);
-    if (products.length === 0) {
-      throw new Error(`Menu category '${category.id || category.name}' has no visible products.`);
-    }
-
-    products.forEach((product) => {
-      if (!product.name || !productPriceText(product)) {
-        throw new Error(`Menu product '${product.id || product.name || "unknown"}' is incomplete.`);
-      }
-    });
-  });
-
-  return categories;
+  return menuData.categories;
 }
 
 function createMenuIcon(src) {
@@ -212,7 +144,7 @@ function createMenuSection(category) {
 
   const productList = document.createElement("ul");
   productList.className = "product-list";
-  orderedItems(category.products).filter(isVisibleInDineIn).forEach((product) => {
+  category.products.forEach((product) => {
     productList.appendChild(createProductItem(product));
   });
 
@@ -223,7 +155,7 @@ function createMenuSection(category) {
 function renderMenu(menuData) {
   if (!menuPage) return;
 
-  const categories = validateMenuData(menuData);
+  const categories = menuCategories(menuData);
   const fragment = document.createDocumentFragment();
   fragment.appendChild(createSectionNav(categories));
   categories.forEach((category) => {
@@ -233,7 +165,6 @@ function renderMenu(menuData) {
   menuPage.replaceChildren(fragment);
   setupSectionNav();
   setupProductItems();
-  settleHashTarget("auto");
 }
 
 async function loadMenuData() {
@@ -365,8 +296,6 @@ function setupProductItems() {
 }
 
 setupSectionNav();
-settleHashTarget("auto");
-window.addEventListener("load", () => scrollToHashTarget("auto"), { once: true });
 
 if (productModal) {
   setupProductItems();
