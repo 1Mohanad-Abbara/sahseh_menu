@@ -2,7 +2,7 @@
 
 Static Arabic RTL QR menu website for Sahseh. This repo is the deployed in-restaurant menu and is separate from any future ordering app. Keep it fast, dependency-free, and usable without checkout/order actions.
 
-Last reviewed against `index.html`, `styles.css`, `script.js`, and `data/menu.json` on 2026-07-26.
+Last reviewed against `index.html`, `styles.css`, `script.js`, and `data/menu.json` on 2026-08-06.
 
 ## Source Of Truth
 
@@ -30,7 +30,7 @@ This static repo keeps deploy copies because Vercel serves this repo independent
 
 ## Runtime Flow
 
-1. `index.html` renders a complete fallback menu immediately. The fallback currently matches the JSON at 13 sections and 103 products.
+1. `index.html` renders a complete fallback menu immediately. The fallback currently matches the JSON at 13 sections and 104 products.
 2. A small inline head script checks `localStorage["sahseh-menu-theme"]` before CSS loads and sets `html[data-theme="light"]` to reduce theme flash.
 3. `styles.css` defaults to the dark red/black theme. Light mode is controlled only by `:root[data-theme="light"]` variables and overrides.
 4. `script.js` calls `loadMenuData()`, fetches the path in `main.menu-page[data-menu-source]` (`data/menu.json`), then replaces the fallback menu with DOM generated from JSON.
@@ -129,8 +129,8 @@ This repo is intended for Vercel static hosting through GitHub. Use the reposito
 ## Current Counts
 
 - 13 categories.
-- 103 products.
-- 103 prices.
+- 104 products.
+- 104 prices.
 - 0 populated product images.
 - 0 populated product ingredient descriptions.
 - No empty price slots.
