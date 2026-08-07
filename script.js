@@ -71,7 +71,7 @@ function setupSectionNav() {
 
 function productPriceText(product) {
   if (product.priceText !== undefined && product.priceText !== null) return String(product.priceText);
-  if (Number.isFinite(Number(product.price))) return Number(product.price).toFixed(2);
+  if (Number.isFinite(Number(product.price))) return Number.isInteger(Number(product.price)) ? String(Number(product.price)) : Number(product.price).toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
   return "";
 }
 
