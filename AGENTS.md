@@ -32,7 +32,7 @@ This static repo keeps deploy copies because Vercel serves this repo independent
 
 1. `index.html` renders a complete fallback menu immediately. The fallback currently matches the JSON at 13 sections and 104 products.
 2. A small inline head script checks `localStorage["sahseh-menu-theme"]` before CSS loads and sets `html[data-theme="light"]` to reduce theme flash.
-3. `styles.css` defaults to the dark red/black theme. Light mode is controlled only by `:root[data-theme="light"]` variables and overrides.
+3. `styles.css` uses the light theme for first-time visitors and the dark red/black theme when the user selects dark mode. Light mode is controlled only by `:root[data-theme="light"]` variables and overrides.
 4. `script.js` calls `loadMenuData()`, fetches the path in `main.menu-page[data-menu-source]` (`data/menu.json`), then replaces the fallback menu with DOM generated from JSON.
 5. If the fetch fails, the fallback HTML remains visible and usable.
 
@@ -40,7 +40,7 @@ Run through a local HTTP server when testing the JSON-rendered path. Opening `in
 
 ## JavaScript Behavior
 
-- Theme state is stored under `sahseh-menu-theme`; only `"light"` is persisted explicitly as light, everything else falls back to dark.
+- Theme state is stored under `sahseh-menu-theme`; `"light"` and `"dark"` preferences are persisted; first-time or invalid values fall back to light.
 - Section nav links are wired by `setupSectionNav()` and scroll with `window.scrollTo()` using the sticky header height plus 8px.
 - Initial URL hashes rely on normal browser hash behavior plus CSS `scroll-padding-top`/`scroll-margin-top`; there is no manual scroll restoration or post-render hash correction in the current JS.
 - `renderMenu()` replaces all children of `.menu-page`, then rewires nav and product row events.
@@ -94,7 +94,7 @@ When updating menu content, keep `data/menu.json` and the fallback menu inside `
 - Header is sticky and participates in scroll offset calculations; if header height changes, retest nav clicks and direct hash URLs.
 - Avoid tap/active color flashes on product rows and section buttons. Desktop hover effects are allowed when scoped to mouse/fine-pointer devices. Keep keyboard `:focus-visible` outlines.
 - Product row layout reserves a fixed price column so long Arabic names wrap without pushing prices out of alignment.
-- Theme changes should stay variable-driven where possible. Dark mode is the default.
+- Theme changes should stay variable-driven where possible. Light mode is the default for first-time visitors.
 
 ## Local Run And Checks
 
@@ -106,7 +106,7 @@ python -m http.server 8000
 
 Useful checks before handoff:
 
-- Verify the page loads in dark mode by default and the theme toggle persists light mode.
+- Verify the page loads in light mode by default and the theme toggle persists both light and dark modes.
 - Verify `data/menu.json` loads over HTTP and replaces the fallback without losing section nav or modal behavior.
 - Verify category links land below the sticky header on mobile and desktop.
 - Verify product rows open the modal with name, price, placeholder image, and fallback ingredients.

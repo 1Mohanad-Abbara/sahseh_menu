@@ -11,10 +11,11 @@
     <script>
       (() => {
         try {
-          if (localStorage.getItem("sahseh-menu-theme") === "light") {
-            document.documentElement.dataset.theme = "light";
-          }
-        } catch (error) {}
+          const storedTheme = localStorage.getItem("sahseh-menu-theme");
+          document.documentElement.dataset.theme = storedTheme === "dark" ? "dark" : "light";
+        } catch (error) {
+          document.documentElement.dataset.theme = "light";
+        }
       })();
     </script>
     <link rel="stylesheet" href="styles.css" />
@@ -29,7 +30,7 @@
         </div>
       </div>
       <div class="header-actions">
-        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="تفعيل النمط الفاتح" title="النمط الفاتح">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="true" aria-label="تفعيل النمط الداكن" title="النمط الداكن">
           <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M21 14.4A8.2 8.2 0 0 1 9.6 3a7 7 0 1 0 11.4 11.4Z" />
           </svg>

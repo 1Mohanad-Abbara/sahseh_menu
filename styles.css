@@ -654,14 +654,17 @@ h1 {
 }
 
 .price-slot {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  min-width: 0;
   height: 2.1rem;
+  display: inline-grid;
+  place-items: center;
+  padding: 0.08rem 0.45rem 0;
   border: 1.5px dashed var(--accent-line-strong);
   border-radius: 0.55rem;
   background: #0d0b0a;
   color: var(--brand-red-dark);
+  font-family: Tahoma, Arial, "Segoe UI", sans-serif;
   font-weight: 900;
   line-height: 1;
   text-align: center;
@@ -796,13 +799,16 @@ body.modal-open {
   grid-area: price;
   min-width: 4.9rem;
   min-height: 2rem;
-  padding: 0.42rem 0.65rem;
+  display: inline-grid;
+  place-items: center;
+  padding: 0.48rem 0.65rem 0.36rem;
   border: 1.5px dashed var(--accent-line-strong);
   border-radius: 0.58rem;
   background: #0d0b0a;
   color: var(--brand-red-dark);
   direction: ltr;
   text-align: center;
+  font-family: Tahoma, Arial, "Segoe UI", sans-serif;
   font-weight: 900;
   line-height: 1;
 }
@@ -1009,24 +1015,33 @@ body.modal-open {
   z-index: 30;
   width: 3.15rem;
   height: 3.15rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
   border: 1px solid var(--accent-line-strong);
   border-radius: 50%;
   background: #060505;
   color: var(--bar-text);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.48);
   font: inherit;
-  font-size: 1.9rem;
+  font-size: 0;
   font-weight: 1000;
   line-height: 1;
-  padding: 0 0 0.18rem;
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
   transform: translateY(0.45rem);
   transition: opacity 160ms ease, transform 160ms ease, background 160ms ease;
+}
+
+.back-to-top::before {
+  content: "↑";
+  display: block;
+  font-family: Arial, "Segoe UI", sans-serif;
+  font-size: 1.9rem;
+  font-weight: 900;
+  line-height: 1;
+  transform: translateY(-0.02rem);
 }
 
 .back-to-top.is-visible {
@@ -1046,8 +1061,10 @@ body.modal-open {
     bottom: 0.75rem;
     width: 2.85rem;
     height: 2.85rem;
+  }
+
+  .back-to-top::before {
     font-size: 1.65rem;
-    padding-bottom: 0.16rem;
   }
 }
 @media (hover: hover) and (pointer: fine) {

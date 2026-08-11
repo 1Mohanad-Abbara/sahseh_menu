@@ -6,9 +6,9 @@ const themeStorageKey = "sahseh-menu-theme";
 
 function savedTheme() {
   try {
-    return localStorage.getItem(themeStorageKey) === "light" ? "light" : "dark";
+    return localStorage.getItem(themeStorageKey) === "dark" ? "dark" : "light";
   } catch (error) {
-    return "dark";
+    return "light";
   }
 }
 
