@@ -2,7 +2,7 @@
 
 Static Arabic RTL QR menu website for Sahseh. This repo is the deployed in-restaurant menu and is separate from any future ordering app. Keep it fast, dependency-free, and usable without checkout/order actions.
 
-Last reviewed against `index.html`, `styles.css`, `script.js`, and `data/menu.json` on 2026-08-06.
+Last reviewed against `index.html`, `styles.css`, `script.js`, and `data/menu.json` on 2026-08-11.
 
 ## Source Of Truth
 
@@ -94,6 +94,9 @@ When updating menu content, keep `data/menu.json` and the fallback menu inside `
 - Header is sticky and participates in scroll offset calculations; if header height changes, retest nav clicks and direct hash URLs.
 - Avoid tap/active color flashes on product rows and section buttons. Desktop hover effects are allowed when scoped to mouse/fine-pointer devices. Keep keyboard `:focus-visible` outlines.
 - Product row layout reserves a fixed price column so long Arabic names wrap without pushing prices out of alignment.
+- Price slots use grid centering and fixed dimensions; keep prices visually centered on both mobile and desktop.
+- The back-to-top arrow is centered through CSS on the circular button; avoid padding nudges that can shift on mobile.
+- The shared background pattern deploy copy comes from `../sahseh_source/assets/beauty/background-pattern.svg`; it is a transparent tile with light-red strokes so the drawing stays red in dark mode.
 - Theme changes should stay variable-driven where possible. Light mode is the default for first-time visitors.
 
 ## Local Run And Checks
