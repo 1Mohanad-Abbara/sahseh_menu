@@ -30,7 +30,7 @@ This static repo keeps deploy copies because Vercel serves this repo independent
 
 ## Runtime Flow
 
-1. `index.html` renders a complete fallback menu immediately. The fallback currently matches the JSON at 13 sections and 104 products.
+1. `index.html` renders a complete fallback menu immediately. The fallback currently matches the JSON at 13 sections and 105 products.
 2. A small inline head script checks `localStorage["sahseh-menu-theme"]` before CSS loads and sets `html[data-theme="light"]` to reduce theme flash.
 3. `styles.css` uses the light theme for first-time visitors and the dark red/black theme when the user selects dark mode. Light mode is controlled only by `:root[data-theme="light"]` variables and overrides.
 4. `script.js` calls `loadMenuData()`, fetches the path in `main.menu-page[data-menu-source]` (`data/menu.json`), then replaces the fallback menu with DOM generated from JSON.
@@ -132,8 +132,8 @@ This repo is intended for Vercel static hosting through GitHub. Use the reposito
 ## Current Counts
 
 - 13 categories.
-- 104 products.
-- 104 prices.
+- 105 products.
+- 105 prices.
 - 0 populated product images.
 - 0 populated product ingredient descriptions.
 - No empty price slots.
@@ -143,6 +143,6 @@ This repo is intended for Vercel static hosting through GitHub. Use the reposito
 - Canonical menu data and shared assets belong in the sibling `sahseh_source` repository. This repository contains deploy copies and the QR assets owned only by the static menu.
 - Keep `data/menu.json` and the hardcoded fallback inside `index.html` synchronized after source changes. The fallback must remain complete and usable if JSON loading fails.
 - Customer-visible prices are whole-number strings without unnecessary decimal zeros. The source validator and deploy copies must agree with the fallback HTML.
-- Preserve the 13-category, 104-product structure, Arabic RTL layout, dark/light theme persistence, product modal behavior, footer phone-link boundary, hover behavior, and back-to-top behavior.
+- Preserve the 13-category, 105-product structure, Arabic RTL layout, dark/light theme persistence, product modal behavior, footer phone-link boundary, hover behavior, and back-to-top behavior.
 - Do not add ordering, cart, checkout, or WhatsApp controls to this repository.
 - Validate the static JavaScript syntax and test through an HTTP server because direct file opening may block the JSON request.
