@@ -22,4 +22,4 @@ Run the site through a local HTTP server from the repository root so the JSON re
 
 Canonical menu data and shared assets are maintained in `../sahseh_source`. Sync changes from the source repository before deploying this repository through Vercel or another static host.
 
-The current menu contains 13 categories, 105 products, and 105 prices.
+The current menu contains 14 categories, 108 products, and 108 prices.
